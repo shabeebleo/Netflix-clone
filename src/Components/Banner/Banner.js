@@ -12,7 +12,7 @@ function Banner() {
     const [movie, setMovie] = useState([])
     useEffect(() => {
       axios.get(`/trending/all/week?api_key=${API_KEY}&language=en-US`).then((response)=>{
-        console.log(response.data.results[0]);
+        console.log(response.data.results[m]);
         
         setMovie(response.data.results[m])
       })   
@@ -25,7 +25,7 @@ function Banner() {
         className='banner'>
                   
             <div className='content'>
-                <h1 className='title'>{movie?movie.name:''}</h1>
+                <h1 className='title'>{movie?movie.name||movie.original_title:''}</h1>
 
                 <div className='banner_buttons'>
                     <button className='button'>Play</button>
